@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="icon" href="images/bemestaricon.icon" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Registro</title>
+    <a href="index.html">
+        <button class="Btn">
+          <svg height="1.2em" class="arrow" viewBox="0 0 512 512">
+            <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
+          </svg>
+          <p class="text">Volte para o início!</p>
+        </button>
+      </a>
+      
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: #dfdfdffd;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .container header {
+            font-size: 1.2rem;
+            color: #000;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .container .form {
+            margin-top: 15px;
+        }
+
+        .form .input-box {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .input-box label {
+            color: #000;
+        }
+
+        .form :where(.input-box input, .select-box) {
+            position: relative;
+            height: 35px;
+            width: 100%;
+            outline: none;
+            font-size: 1rem;
+            color: #000000;
+            margin-top: 5px;
+            border: 1px solid #4d9f46;
+            border-radius: 6px;
+            padding: 0 15px;
+            background: #ffffff;
+        }
+
+        .input-box input:focus {
+            box-shadow: 0 1px 0 rgb(0, 0, 0);
+        }
+
+        .form .column {
+            display: flex;
+            column-gap: 15px;
+        }
+
+        .form .gender-box {
+            margin-top: 10px;
+        }
+
+        .form :where(.gender-option, .gender) {
+            display: flex;
+            align-items: center;
+            column-gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .form .gender {
+            column-gap: 5px;
+        }
+
+        .gender input {
+            accent-color: #4d9f46;
+        }
+
+        .form :where(.gender input, .gender label) {
+            cursor: pointer;
+        }
+
+        .gender label {
+            color: #000;
+        }
+
+        .address :where(input, .select-box) {
+            margin-top: 10px;
+        }
+
+        .select-box select {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            border: none;
+            color: #000000;
+            font-size: 1rem;
+            background: #00000000;
+        }
+
+        .form button {
+            height: 40px;
+            width: 100%;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-top: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #4d9f46;
+        }
+
+        .form button:hover {
+            background: #4d9f46;
+        }
+
+        .Btn {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(#4d9f46, #4d9f46);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  border: none;
+}
+
+.arrow path {
+  fill: rgb(255, 255, 255);
+}
+
+.text {
+  font-size: 0.7em;
+  width: 100px;
+  position: absolute;
+  color: rgb(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: -18px;
+  opacity: 0;
+  transition-duration: .7s;
+}
+
+.Btn:hover .text {
+  opacity: 1;
+  transition-duration: .7s;
+}
+
+.Btn:hover .arrow {
+  animation: slide-in-bottom .7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>Formulário de Registro</header>
+        <form class="form" action="#">
+            <div class="input-box">
+                <label>Nome Completo</label>
+                <input required="" placeholder="Digite o nome completo" type="text">
+            </div>
+            <div class="column">
+                <div class="input-box">
+                    <label>Número de Telefone</label>
+                    <input required="" placeholder="Digite o número de telefone" type="telephone">
+                </div>
+                <div class="input-box">
+                    <label>Data de Nascimento</label>
+                    <input required="" placeholder="Digite a data de nascimento" type="date">
+                </div>
+            </div>
+            <div class="gender-box">
+                <label>Gênero</label>
+                <div class="gender-option">
+                    <div class="gender">
+                        <input checked="" name="gender" id="check-male" type="radio">
+                        <label for="check-male">Masculino</label>
+                    </div>
+                    <div class="gender">
+                        <input name="gender" id="check-female" type="radio">
+                        <label for="check-female">Feminino</label>
+                    </div>
+                    <div class="gender">
+                        <input name="gender" id="check-other" type="radio">
+                        <label for="check-other">Prefiro não dizer</label>
+                    </div>
+                </div>
+            </div>
+            <div class="input-box">
+                <label>Número de RG</label>
+                <input required="" placeholder="Digite o seu RG" type="rg">
+            </div>
+            <div class="input-box address">
+                <label>Endereço</label>
+                <input required="" placeholder="Digite o endereço" type="text">
+                <div class="column">
+                    <div class="select-box">
+                        <select>
+                            <option hidden="">País</option>
+                            <option>Brasil</option>
+                        </select>
+                    </div>
+                    <input required="" placeholder="Digite a sua cidade" type="text">
+                </div>
+            </div>
+            <button>Enviar</button>
+        </form>
+    </div>
+</body>
+</html>

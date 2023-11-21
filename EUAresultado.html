@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="images/bemestaricon.icon" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Examination Inquiry</title>
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #4d9f46;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #exameResult {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        #exameResult p {
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .Btn {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(#4d9f46, #4d9f46);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            border: none;
+        }
+
+        .arrow path {
+            fill: rgb(255, 255, 255);
+        }
+
+        .text {
+            font-size: 0.7em;
+            width: 100px;
+            position: absolute;
+            color: rgb(0, 0, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            bottom: -18px;
+            opacity: 0;
+            transition-duration: 0.7s;
+        }
+
+        .Btn {
+            margin-left: -80px; 
+        }
+
+        .Btn:hover .text {
+            opacity: 1;
+            transition-duration: 0.7s;
+        }
+
+        .Btn:hover .arrow {
+            animation: slide-in-bottom 0.7s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Medical Examination Inquiry</h1>
+    <div class="form-container">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Your Name">
+        <label for="id">ID:</label>
+        <input type="text" id="id" placeholder="Your ID">
+        <button onclick="checkExamination()">Check Examination</button>
+    </div>
+    
+    <div id="exameResult">
+    </div>
+    
+    <a href="eua.html" class="Btn">
+        <svg height="1.2em" class="arrow" viewBox="0 0 512 512">
+            <path d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"></path>
+        </svg>
+        <p class="text">Return to Start</p>
+    </a>
+</div>
+
+<script>
+    const patients = [
+        { name: "Augusto da Silva Junior", id: "123", examination: "Blood Test", result: "Normal", description: "All blood parameters are within the reference range. No abnormalities detected." },
+        { name: "Raphael Depoian", id: "456", examination: "Blood Pressure", result: "Normal Blood Pressure", description: "Systolic blood pressure is normal." },
+        { name: "Alex Sander de Deus", id: "789", examination: "Cholesterol", result: "Normal LDL Cholesterol", description: "The LDL cholesterol level is normal." },
+        { name: "Daniel da Silva", id: "1234", examination: "Blood Glucose", result: "Normal", description: "Blood glucose level is normal." }
+    ];
+
+    function checkExamination() {
+        const name = document.getElementById("name").value;
+        const id = document.getElementById("id").value;
+
+        const patientFound = patients.find(patient => patient.name === name && patient.id === id);
+
+        if (patientFound) {
+            const examResult = document.getElementById("exameResult");
+            examResult.innerHTML = `
+                <p><strong>Name:</strong> ${patientFound.name}</p>
+                <p><strong>ID:</strong> ${patientFound.id}</p>
+                <p><strong>Examination:</strong> ${patientFound.examination}</p>
+                <p><strong>Result:</strong> ${patientFound.result}</p>
+                <p><strong>Description:</strong> ${patientFound.description}</p>
+            `;
+        } else {
+            alert("Patient not found. Please check the name and ID.");
+        }
+    }
+</script>
+</body>
+</html>
